@@ -1,25 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Burrito;
-using NaughtyAttributes;
-using System;
-using Random = UnityEngine.Random;
-using UnityEngine.TerrainUtils;
-using nn.oe;
-
-
-
-
-
-#if FMOD
-using FMOD.Studio;
-using FMODUnity;
-#endif
-
 namespace DarkSound
 {
-    public class DSAudioSource : DSPathfinderBehaviour
+	using UnityEngine;
+
+	using System;
+	using System.Collections;
+	using System.Collections.Generic;
+
+	using Burrito;
+	using NaughtyAttributes;
+	using FMOD.Studio;
+	using FMODUnity;
+	using Random = UnityEngine.Random;
+
+	public class DSAudioSource : DSPathfinderBehaviour
     { 
 		public enum AttenuationType { Logarithmic, Linear, OutdoorFoley, Custom }
 

@@ -1,17 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
-using UnityEditor;
-using nn.fs;
-using static DarkSound.DSRoom;
-using System.IO;
-using nn.oe;
-using System;
-
-
 namespace DarkSound
 {
+	using System.Collections;
+	using System.Collections.Generic;
+	using UnityEngine;
+	using System.Linq;
+	using System;
+
+
 	public class AudabilityData
 	{
 		public float lastAudibleTime;

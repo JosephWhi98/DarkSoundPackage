@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Linq;
-
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 namespace DarkSound
 {
-    public class DSPathNode : IHeapItem<DSPathNode>
+	using System.Collections;
+	using System.Collections.Generic;
+	using UnityEngine;
+	using System.Linq;
+
+	public class DSPathNode : IHeapItem<DSPathNode>
     {
         public Vector3 worldPosition;
         public float gCost;

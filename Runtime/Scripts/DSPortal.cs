@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-using NaughtyAttributes;
-
-
 namespace DarkSound
 {
-    [RequireComponent(typeof(BoxCollider))]
+	using System.Collections;
+	using System.Collections.Generic;
+	using UnityEngine;
+	using NaughtyAttributes;
+
+	[RequireComponent(typeof(BoxCollider))]
     public class DSPortal : DSPathfinderBehaviour
     {
         public DSRoom firstRoom;

@@ -1,7 +1,7 @@
-using System;
-
 namespace DarkSound
 {
+	using System;
+
 	public class DSHeap<T> where T : IHeapItem<T>
     {
 

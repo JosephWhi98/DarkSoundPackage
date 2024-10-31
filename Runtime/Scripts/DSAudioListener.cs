@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-
 namespace DarkSound
 {
-    /// <summary>
-    /// DSAudioListener represents the position of the listeners head. This acts seperate from the base Listener position to handle audio propagation effects (Occlusion etc) - Seperate from the spatialisation. 
-    /// </summary> 
+	using System.Collections;
+	using System.Collections.Generic;
+	using UnityEngine;
 
-    public class DSAudioListener : DSPathfinderBehaviour
+	/// <summary>
+	/// DSAudioListener represents the position of the listeners head. This acts seperate from the base Listener position to handle audio propagation effects (Occlusion etc) - Seperate from the spatialisation. 
+	/// </summary> 
+
+	public class DSAudioListener : DSPathfinderBehaviour
 	{
         private DSRoom currentRoom;
 

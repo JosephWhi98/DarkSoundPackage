@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-
 namespace DarkSound
 {
-    public class DSRoom : MonoBehaviour
+	using System.Collections;
+	using System.Collections.Generic;
+	using UnityEngine;
+
+	public class DSRoom : MonoBehaviour
     {
         [System.Serializable]
         public class ConnectedRoom
