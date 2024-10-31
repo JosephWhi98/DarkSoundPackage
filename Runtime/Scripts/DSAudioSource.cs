@@ -23,13 +23,14 @@ namespace DarkSound
 
 		[Header("FMOD")] 
         [SerializeField] private EventReference EventReference;
-        [SerializeField, DropDownList(nameof(PropertyDrawersHelper.GetAllFMODReferenceLocalVariables), nameof(EventReference))] private string LowPassParamater = "LowPass"; 
+        [SerializeField, DropDownList(nameof(PropertyDrawersHelper.GetAllFMODReferenceLocalVariables), nameof(EventReference))] public string LowPassParamater = "LowPass"; 
 		protected FMOD.Studio.EventInstance instance;
 
 		[Header("Settings")]
-        [SerializeField, Tooltip("Start playing this source as soon as it is enabled")] private bool playOnAwake = false;
-		[SerializeField, Tooltip("Should this source loop?")] private bool loop = false;
-        [SerializeField] public bool audibleToSecondaryListeners; 
+        [SerializeField, Tooltip("Start playing this source as soon as it is enabled")] private bool playOnAwake = false; 
+		[SerializeField, Tooltip("Should this source loop?")] public bool loop = false;
+		[ShowIf("loop"), AllowNesting, DropDownList(nameof(PropertyDrawersHelper.GetAllFMODReferenceLocalVariables), nameof(EventReference))] public string loopParamater = "Looping";
+		[SerializeField] public bool audibleToSecondaryListeners; 
         [HideInInspector] public float innerAngle = 360f;
 		[HideInInspector] public float outerAngle = 360f;  
 
@@ -223,6 +224,8 @@ namespace DarkSound
 						EventInstance.setParameterByName(LowPassParamater, !initialisationCall ? Mathf.Lerp(currentLowPass, lowPass, 3f * Time.deltaTime) : lowPass);
 
 						EventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(movedPosition));
+
+						EventInstance.setParameterByName(loopParamater, loop ? 1 : 0); 
 					}
 				}
 			}
@@ -249,10 +252,10 @@ namespace DarkSound
 			}
 
             DSRoom currentListenerRoom = listener.CurrentRoom;
-		
+		 
             float propagationDistance = 0f; 
-
-			bool listenerOnSameFloor = CurrentRoom == null || currentListenerRoom == null || currentListenerRoom.isOutdoorRoom || Mathf.Abs(currentListenerRoom.transform.position.y - CurrentRoom.transform.position.y) < 5f;
+			 
+			bool listenerOnSameFloor = CurrentRoom == null || currentListenerRoom == null || currentListenerRoom.isOutdoorRoom || Mathf.Abs(currentListenerRoom.transform.position.y - CurrentRoom.transform.position.y) < 2f;
 
 
 			if (currentListenerRoom == CurrentRoom) //Calculates propagation when the audioListener and the audioSource are in the same room.
@@ -333,13 +336,12 @@ namespace DarkSound
 				}
 				 
 				portalObstruction = Mathf.Clamp01(portalObstruction);
-				 
 
 				//Check direct distance. 
 				float directDistance = Vector3.Distance(listener.transform.position, ActualPosition); 
 
-				float directScale = Mathf.Clamp01(directDistance / (maxDistance / 3f));  
-
+				float directScale = Mathf.Clamp01(directDistance / (maxDistance / 3f));
+				 
 				float impactScale = listenerOnSameFloor ? directTravelThroughWallScale : directTravelThroughFloorScale;
 
 				propagationDistance =  propagationDistance - (impactScale * 100f * (1f - directScale)); 
@@ -545,17 +547,21 @@ namespace DarkSound
             Vector3 rightFromListenerPosition = listenerPosition + (-leftFromListenerDirection * obstructionLeftRightScale);
             Vector3 rightFromSourcePosition = sourcePosition + (-leftFromSourceDirection * obstructionLeftRightScale);
 
-            numberOfRaysObstructed += ObstructionLinecast(sourcePosition, listenerPosition);
-            numberOfRaysObstructed += ObstructionLinecast(leftFromSourcePosition, leftFromListenerPosition);
-            numberOfRaysObstructed += ObstructionLinecast(rightFromSourcePosition, leftFromListenerPosition);
-            numberOfRaysObstructed += ObstructionLinecast(leftFromSourcePosition, rightFromListenerPosition);
-            numberOfRaysObstructed += ObstructionLinecast(rightFromSourcePosition, rightFromListenerPosition);
-            numberOfRaysObstructed += ObstructionLinecast(sourcePosition, leftFromListenerPosition);
-            numberOfRaysObstructed += ObstructionLinecast(sourcePosition, rightFromListenerPosition);
-            numberOfRaysObstructed += ObstructionLinecast(leftFromSourcePosition, listenerPosition);
-            numberOfRaysObstructed += ObstructionLinecast(rightFromSourcePosition, listenerPosition);
+            numberOfRaysObstructed += ObstructionLinecast(sourcePosition, listenerPosition); 
 
-            float obstructionPercentage = numberOfRaysObstructed / 9;
+			if (listener.isPrimaryListener) //Only do one obstruction check for secondary listeners to massivley reduce the cost of raycasting.
+			{
+				numberOfRaysObstructed += ObstructionLinecast(leftFromSourcePosition, leftFromListenerPosition);
+				numberOfRaysObstructed += ObstructionLinecast(rightFromSourcePosition, leftFromListenerPosition);
+				numberOfRaysObstructed += ObstructionLinecast(leftFromSourcePosition, rightFromListenerPosition);
+				numberOfRaysObstructed += ObstructionLinecast(rightFromSourcePosition, rightFromListenerPosition);
+				numberOfRaysObstructed += ObstructionLinecast(sourcePosition, leftFromListenerPosition);
+				numberOfRaysObstructed += ObstructionLinecast(sourcePosition, rightFromListenerPosition);
+				numberOfRaysObstructed += ObstructionLinecast(leftFromSourcePosition, listenerPosition); 
+				numberOfRaysObstructed += ObstructionLinecast(rightFromSourcePosition, listenerPosition); 
+			}
+
+            float obstructionPercentage = numberOfRaysObstructed / (listener.isPrimaryListener ? 9 : 1);
 
             if (innerAngle != 360f)
             {

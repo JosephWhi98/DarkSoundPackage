@@ -20,7 +20,7 @@ namespace DarkSound
 
 
         public virtual void OnDrawGizmos()
-        {
+        { 
             if (Application.isPlaying)
             {
                 Gizmos.color = Color.blue;

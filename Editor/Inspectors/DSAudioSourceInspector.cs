@@ -100,7 +100,14 @@
 			logo = AssetDatabase.LoadAssetAtPath<Texture2D>($"{IconsFolder}Logo.png");
 			DisplayLogo();
 
-			GUILayout.Space(20);
+			GUILayout.Space(10);
+
+			if (audioSource.loop && (string.IsNullOrEmpty(audioSource.loopParamater) || audioSource.loopParamater == audioSource.LowPassParamater))
+			{
+				GUILayout.Label("MISSING LOOP PARAMATER!", EditorStyles.boldLabel); 
+			}
+
+			GUILayout.Space(10);
 			DrawDefaultInspector(); // Draw the default inspector fields
 
 			GUILayout.Space(20); // Space before the attenuation section 
@@ -501,7 +508,7 @@
 			var innerAngleHandleHandle = Quaternion.identity; var fmh_493_110_638659693214727493 = Quaternion.identity; innerHandlePos = Handles.FreeMoveHandle(innerHandlePos, 0.01f * cameraDistance, innerHandlePos, Handles.CubeHandleCap);
 #endif
 
-			if (EditorGUI.EndChangeCheck())
+			if (EditorGUI.EndChangeCheck()) 
 			{
 				Undo.RecordObject(audioSource, "Change Inner Angle");
 
@@ -510,7 +517,6 @@
 				InnerAngle = Vector3.Angle(audioSource.transform.forward, direction) * 2; // Calculate the new angle
 			}
 
-			
 			innerHandlePos = position + rotation * Quaternion.Euler(0, innerAngle / 2f, 0) * Vector3.forward * radius;
 			outerHandlePos = position + rotation * Quaternion.Euler(0, outerAngle / 2f, 0) * Vector3.forward * radius;
 		}
@@ -519,7 +525,7 @@
 		private void DrawSphereSegments(Vector3 position, Quaternion rotation, float radius, float innerAngle, float outerAngle, Color outerColor, Color innerColor, float alpha)
 		{
 			int segments = 360; // Number of segments to draw the sphere segment
-			float angleStep = outerAngle / segments;
+			float angleStep = outerAngle / segments; 
 
 			// Draw the outer arc for the sphere segment
 			for (int i = 0; i <= segments; i++)
