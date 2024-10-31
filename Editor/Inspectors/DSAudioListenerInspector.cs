@@ -5,6 +5,7 @@ namespace DarkSound.Editor
 	using UnityEditor;
 	using DarkSound;
 	using FMODUnity;
+	using System.IO;
 
 	[CustomEditor(typeof(DSAudioListener))]
 	public class DSAudioListenerInspector : UnityEditor.Editor
@@ -13,7 +14,18 @@ namespace DarkSound.Editor
 		Vector2 scrollPosition;
 		private List<Color> indexedColors = new List<Color>();
 
-		public static string IconsFolder => "Assets/DarkSound/DSResources/";
+		public static string IconsFolder
+		{
+			get
+			{ 
+				if (Directory.Exists("Packages/com.wolfandwood.DarkSound/"))
+				{
+					return "Packages/com.wolfandwood.darksound/Editor/Icons/";
+				}
+
+				return "Assets/DarkSound/Editor/Icons/";
+			}
+		}
 
 		private void OnEnable()
 		{

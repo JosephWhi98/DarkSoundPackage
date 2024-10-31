@@ -2,7 +2,8 @@ namespace DarkSound
 {
 	using UnityEngine;
 
-	using System;
+	using System; 
+	using System.IO;
 	using System.Collections;
 	using System.Collections.Generic;
 
@@ -11,6 +12,7 @@ namespace DarkSound
 	using FMOD.Studio;
 	using FMODUnity;
 	using Random = UnityEngine.Random;
+
 
 	public class DSAudioSource : DSPathfinderBehaviour
     { 
@@ -670,13 +672,26 @@ namespace DarkSound
 			{
 				maxDistance = minDistance;
 			}
-		} 
+		}
 
 #if UNITY_EDITOR
-        public override void OnDrawGizmos()   
+		public static string IconsFolder
+		{
+			get
+			{
+				if (Directory.Exists("Packages/com.wolfandwood.DarkSound/"))
+				{
+					return "Packages/com.wolfandwood.darksound/Editor/Icons/";
+				}
+
+				return "Assets/DarkSound/Editor/Icons/";
+			}
+		}
+
+		public override void OnDrawGizmos()   
 		{ 
-			base.OnDrawGizmos(); 
-			Gizmos.DrawIcon(Application.isPlaying ? movedPosition : transform.position, "Assets/DarkSound/DSResources/Gizmo.png", true);
+			base.OnDrawGizmos();
+			Gizmos.DrawIcon(Application.isPlaying ? movedPosition : transform.position, $"{IconsFolder}Gizmo.png", true);
 		}
 #endif
     }

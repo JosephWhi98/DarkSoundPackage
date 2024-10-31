@@ -16,15 +16,15 @@
 		{
 			get
 			{
-				//if (Directory.Exists("Assets/DarkSound/DSResources/"))
-				//{
-				//	return "Assets/DarkSound/DSResources/";
-				//}
+				if (Directory.Exists("Packages/com.wolfandwood.DarkSound/"))
+				{
+					return "Packages/com.wolfandwood.darksound/Editor/Icons/";
+				}
 
-				return "Assets/DarkSound/DSResources/";
+				return "Assets/DarkSound/Editor/Icons/";
 			}
 		}
-
+		 
 		private Texture logo;
 
 		private DSAudioSource audioSource;
@@ -479,7 +479,7 @@
 
 			Handles.color = innerAngleColor;
 
-			var outerAngleHandle = Quaternion.identity; outerHandlePos = Handles.FreeMoveHandle(outerHandlePos, Quaternion.identity, 0.01f * cameraDistance, outerHandlePos, Handles.CubeHandleCap);
+			var outerAngleHandle = Quaternion.identity; var fmh_482_104_638659693214698491 = Quaternion.identity; outerHandlePos = Handles.FreeMoveHandle(outerHandlePos, 0.01f * cameraDistance, outerHandlePos, Handles.CubeHandleCap);
 			if (EditorGUI.EndChangeCheck())
 			{
 				Undo.RecordObject(audioSource, "Change Outer Angle");
@@ -490,7 +490,7 @@
 			}
 
 
-			var innerAngleHandleHandle = Quaternion.identity; innerHandlePos = Handles.FreeMoveHandle(innerHandlePos, Quaternion.identity, 0.01f * cameraDistance, innerHandlePos, Handles.CubeHandleCap);
+			var innerAngleHandleHandle = Quaternion.identity; var fmh_493_110_638659693214727493 = Quaternion.identity; innerHandlePos = Handles.FreeMoveHandle(innerHandlePos, 0.01f * cameraDistance, innerHandlePos, Handles.CubeHandleCap);
 			if (EditorGUI.EndChangeCheck())
 			{
 				Undo.RecordObject(audioSource, "Change Inner Angle");
