@@ -23,6 +23,8 @@ public class GitDependencyResolver
     // Invoked when the package manager completes registering new packages
     static void OnPackagesRegistered(PackageRegistrationEventArgs packageRegistrationInfo)
     {
+        Debug.Log("Attempting to resolve git dependancies");
+
         // stores all the dependencies that needs to be installed in this step
         List<string> dependencies = new List<string>();
 

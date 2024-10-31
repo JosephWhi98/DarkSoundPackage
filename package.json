@@ -1,12 +1,14 @@
 {
   "name": "com.wolfandwood.darksound",
-  "version": "0.0.15", 
+  "version": "0.0.16", 
   "displayName": "Wolf & Wood DarkSound",
   "description": "Wolf & Wood internal Unity middleware; Toolbar->DarkSound - Audio Propagation",
   "unity": "2021.3",
   "dependencies": {
-	  "com.wolfandwood.burrito":"https://github.com/wolfandwoodtm/Burrito.git"
   },
+  "git-dependencies": [
+	"https://github.com/wolfandwoodtm/Burrito.git#main",
+	],
   "keywords": [ 
 	"DarkSound",
 	"Audio",
@@ -17,4 +19,4 @@
     "email": "josephwhitehead@wolfandwood.co",
     "url": "https://www.wolfandwood.co/"
   }
-}
+} 
