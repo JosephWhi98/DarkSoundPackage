@@ -1,5 +1,5 @@
 {
-  "name": "com.wolfandwood.DarkSound",
+  "name": "com.wolfandwood.darksound",
   "version": "0.0.1", 
   "displayName": "Wolf & Wood DarkSound",
   "description": "Wolf & Wood internal Unity middleware; Toolbar->DarkSound - Audio Propagation",
