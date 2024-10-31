@@ -5,14 +5,15 @@
   "description": "Wolf & Wood internal Unity middleware; Toolbar->DarkSound - Audio Propagation",
   "unity": "2021.3",
   "dependencies": {
-    "com.unity.addressables": "1.19.19",
-    "com.wolfandwood.burrito": "https://github.com/wolfandwoodtm/Burrito.git#main",
-    "com.dbrizov.naughtyattributes": "https://github.com/dbrizov/NaughtyAttributes.git#upm"
   },
+  "git-dependencies": [
+	"https://github.com/wolfandwoodtm/Burrito.git#main",
+    "https://github.com/dbrizov/NaughtyAttributes.git#upm"
+	],
   "keywords": [ 
-    "DarkSound",
-    "Audio",
-    "Propagation"
+	"DarkSound",
+	"Audio",
+	"Propagation"
   ],
   "author": {
     "name": "Wolf & Wood",
