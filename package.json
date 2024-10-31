@@ -1,0 +1,28 @@
+{
+  "name": "com.wolfandwood.DarkSound",
+  "version": "0.0.1", 
+  "displayName": "Wolf & Wood DarkSound",
+  "description": "Wolf & Wood internal Unity middleware; Toolbar->DarkSound - Audio Propagation",
+  "unity": "2021.3",
+  "dependencies": {
+    "com.unity.addressables": "1.19.19",
+    "com.unity.inputsystem": "1.7.0",
+	"com.unity.nuget.newtonsoft-json": "3.2.1",
+	"com.unity.textmeshpro": "3.0.8",
+	"com.unity.test-framework": "1.1.33"
+  },
+  "git-dependencies": [
+	"https://github.com/wolfandwoodtm/Burrito.git#main",
+    "https://github.com/dbrizov/NaughtyAttributes.git#upm"
+	],
+  "keywords": [ 
+	"DarkSound",
+	"Audio",
+	"Propagation"
+  ],
+  "author": {
+    "name": "Wolf & Wood",
+    "email": "josephwhitehead@wolfandwood.co",
+    "url": "https://www.wolfandwood.co/"
+  }
+}
