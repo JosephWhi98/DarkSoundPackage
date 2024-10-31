@@ -479,7 +479,13 @@
 
 			Handles.color = innerAngleColor;
 
+
+#if !UNITY_2022_1_OR_NEWER
+			var outerAngleHandle = Quaternion.identity; var fmh_482_104_638659693214698491 = Quaternion.identity; outerHandlePos = Handles.FreeMoveHandle(outerHandlePos, Quaternion.identity, 0.01f * cameraDistance, outerHandlePos, Handles.CubeHandleCap);
+#else
 			var outerAngleHandle = Quaternion.identity; var fmh_482_104_638659693214698491 = Quaternion.identity; outerHandlePos = Handles.FreeMoveHandle(outerHandlePos, 0.01f * cameraDistance, outerHandlePos, Handles.CubeHandleCap);
+#endif
+
 			if (EditorGUI.EndChangeCheck())
 			{
 				Undo.RecordObject(audioSource, "Change Outer Angle");
@@ -488,9 +494,13 @@
 				Vector3 direction = outerHandlePos - position; // Direction from center to handle
 				OuterAngle = Vector3.Angle(audioSource.transform.forward, direction) * 2; // Calculate the new angle
 			}
-
-
+			 
+#if !UNITY_2022_1_OR_NEWER
+            var innerAngleHandleHandle = Quaternion.identity; var fmh_493_110_638659693214727493 = Quaternion.identity; innerHandlePos = Handles.FreeMoveHandle(innerHandlePos, Quaternion.identity, 0.01f * cameraDistance, innerHandlePos, Handles.CubeHandleCap);
+#else
 			var innerAngleHandleHandle = Quaternion.identity; var fmh_493_110_638659693214727493 = Quaternion.identity; innerHandlePos = Handles.FreeMoveHandle(innerHandlePos, 0.01f * cameraDistance, innerHandlePos, Handles.CubeHandleCap);
+#endif
+
 			if (EditorGUI.EndChangeCheck())
 			{
 				Undo.RecordObject(audioSource, "Change Inner Angle");
