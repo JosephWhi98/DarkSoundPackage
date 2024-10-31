@@ -5,7 +5,7 @@
   "description": "Wolf & Wood internal Unity middleware; Toolbar->DarkSound - Audio Propagation",
   "unity": "2021.3",
   "dependencies": {
-	  "com.wolfandwood.burrito":"https://github.com/wolfandwoodtm/Burrito.git#main"
+	  "com.wolfandwood.burrito":"https://github.com/wolfandwoodtm/Burrito.git"
   },
   "keywords": [ 
 	"DarkSound",
