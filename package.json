@@ -7,7 +7,7 @@
   "dependencies": {
   },
   "git-dependencies": [
-	"https://github.com/wolfandwoodtm/Burrito.git#main",
+	"https://github.com/wolfandwoodtm/Burrito.git#main"
 	],
   "keywords": [ 
 	"DarkSound",
@@ -19,4 +19,4 @@
     "email": "josephwhitehead@wolfandwood.co",
     "url": "https://www.wolfandwood.co/"
   }
-} 
+}
