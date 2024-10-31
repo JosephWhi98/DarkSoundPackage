@@ -5,13 +5,21 @@
         "GUID:be1598d25180783469c1d7cef0558122",
         "GUID:0c752da273b17c547ae705acf0f2adf2"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.wolfandwood.burrito",
+            "expression": "",
+            "define": "BURRITO"
+        }
+    ],
     "noEngineReferences": false
 }

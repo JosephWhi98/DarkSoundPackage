@@ -1,10 +1,10 @@
 {
-    "name": "WolfAndWood.DarkSound.Runtime",
+    "name": "WolfAndWood.DarkSound",
     "rootNamespace": "",
     "references": [
+        "GUID:d0ece180b37afbe45a6f57a70207f012",
         "GUID:776d03a35f1b52c4a9aed9f56d7b4229",
-        "GUID:0c752da273b17c547ae705acf0f2adf2",
-        "GUID:d0ece180b37afbe45a6f57a70207f012"
+        "GUID:0c752da273b17c547ae705acf0f2adf2"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -13,6 +13,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.wolfandwood.burrito",
+            "expression": "0",
+            "define": "BURRITO"
+        }
+    ],
     "noEngineReferences": false
 }

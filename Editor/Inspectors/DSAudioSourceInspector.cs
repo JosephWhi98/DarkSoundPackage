@@ -479,7 +479,7 @@
 
 			Handles.color = innerAngleColor;
 
-			var outerAngleHandle = Quaternion.identity; outerHandlePos = Handles.FreeMoveHandle(outerHandlePos, 0.01f * cameraDistance, outerHandlePos, Handles.CubeHandleCap);
+			var outerAngleHandle = Quaternion.identity; outerHandlePos = Handles.FreeMoveHandle(outerHandlePos, Quaternion.identity, 0.01f * cameraDistance, outerHandlePos, Handles.CubeHandleCap);
 			if (EditorGUI.EndChangeCheck())
 			{
 				Undo.RecordObject(audioSource, "Change Outer Angle");
@@ -490,7 +490,7 @@
 			}
 
 
-			var innerAngleHandleHandle = Quaternion.identity; innerHandlePos = Handles.FreeMoveHandle(innerHandlePos, 0.01f * cameraDistance, innerHandlePos, Handles.CubeHandleCap);
+			var innerAngleHandleHandle = Quaternion.identity; innerHandlePos = Handles.FreeMoveHandle(innerHandlePos, Quaternion.identity, 0.01f * cameraDistance, innerHandlePos, Handles.CubeHandleCap);
 			if (EditorGUI.EndChangeCheck())
 			{
 				Undo.RecordObject(audioSource, "Change Inner Angle");
