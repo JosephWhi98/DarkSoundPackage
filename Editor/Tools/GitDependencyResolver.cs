@@ -17,7 +17,9 @@ public class GitDependencyResolver
 
     static GitDependencyResolver()
     {
-        Events.registeredPackages += OnPackagesRegistered;
+		Debug.Log("Subscribing to register packages");
+
+		Events.registeredPackages += OnPackagesRegistered;
     }
 
     // Invoked when the package manager completes registering new packages
